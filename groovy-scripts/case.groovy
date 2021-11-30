@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-
 int age;
 	   age = 18;
 	   
