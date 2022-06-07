@@ -1,0 +1,8 @@
+#!/usr/bin/env groovy
+File f = new File("dist");
+if (f.exists() && f.isDirectory() && f.isEmpty() == 'false' ) {
+   println("Dir Found")
+} else {
+   println("Not Found")
+
+}
