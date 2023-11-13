@@ -9,7 +9,7 @@ pipeline {
         CURRENTDATE=sh(script: "date '+%Y%m%d%H%M%S'", , returnStdout: true).trim()
     }
     stages {
-        stage("Env Variables") {
+        stage("Earlybird Scan") {
             steps {
              sh "touch abc"
 			 echo "${CURRENTDATE}"
@@ -19,5 +19,17 @@ pipeline {
                
             }
         }
+                stages {
+                stage("Publisg results to EB API") {
+                    steps {
+                    sh "touch abc"
+			        echo "${CURRENTDATE}"
+			
+			 
+               
+                }
+            }
+    
+
 	}
 }
