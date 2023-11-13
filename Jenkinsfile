@@ -22,14 +22,10 @@ pipeline {
                 stages {
                 stage("Publisg results to EB API") {
                     steps {
-                    sh "touch abc"
 			        echo "${CURRENTDATE}"
-			
-			 
-               
+	                }
                 }
-            }
-    
+        }
 
 	}
 }
