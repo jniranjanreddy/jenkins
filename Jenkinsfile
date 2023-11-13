@@ -19,13 +19,14 @@ pipeline {
                
             }
         }
-                stages {
-                stage("Publisg results to EB API") {
-                    steps {
-			        echo "${CURRENTDATE}"
-	                }
-                }
+    }
+    stages {
+        stage("Publisg results to EB API") {
+            steps {
+			echo "${CURRENTDATE}"
+	        }
         }
+    }
 
-	}
 }
+
