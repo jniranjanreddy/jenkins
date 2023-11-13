@@ -1,32 +1,34 @@
 pipeline {
-    agent { 
-          node { 
-            label 'master'
-            customWorkspace "/tmp/${JOB_NAME}"
-        }  
-    }  
-    environment {
-        CURRENTDATE=sh(script: "date '+%Y%m%d%H%M%S'", , returnStdout: true).trim()
-    }
+    agent any
     stages {
-        stage("Earlybird Scan") {
+        stage('Build') {
             steps {
-             sh "touch abc"
-			 echo "${CURRENTDATE}"
-			
-			 echo "${BUILD_NUMBER}"
-			 
-               
+                sh 'echo "Building the application"'
+                // Add commands to build application
+            }
+        }
+        stage('Test') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        sh 'sleep 5s'
+                        sh 'echo "Running unit tests"'
+                        // Add commands to run unit tests
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        sh 'echo "Running integration tests"'
+                        // Add commands to run integration tests
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying the application"'
+                // Add commands to deploy application
             }
         }
     }
-    stages {
-        stage("Publisg results to EB API") {
-            steps {
-			echo "${CURRENTDATE}"
-	        }
-        }
-    }
-
 }
-
